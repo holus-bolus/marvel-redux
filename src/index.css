@@ -12,14 +12,13 @@
   border: 1px solid #ddd;
   padding: 10px;
   margin: 10px;
-  width: calc(25% - 20px);
   box-sizing: border-box;
 }
 
 
 .character-card img {
-  max-width: 100%;
-  height: auto;
+  width: 200px;
+  height: 200px;
   border-radius: 5px;
 }
 

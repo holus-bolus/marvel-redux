@@ -6,6 +6,7 @@ import CharacterCard from './CharacterCard.tsx';
 import { AppDispatch } from '../store.ts';
 import { v4 as uuidv4 } from 'uuid';
 import { Character } from '../interfaces/Character.ts';
+import { Link } from 'react-router-dom';
 
 const CharacterList = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,7 +23,9 @@ const CharacterList = () => {
   return (
     <div className={'characters-list'}>
       {characters.map((character: Character) => (
-        <CharacterCard key={uuidv4()} character={character} />
+        <Link to={`/character/${character.id}`} key={uuidv4()}>
+          <CharacterCard character={character} />
+        </Link>
       ))}
     </div>
   );

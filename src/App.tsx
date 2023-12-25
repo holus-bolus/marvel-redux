@@ -1,12 +1,10 @@
 import './App.css';
-import CharacterList from './components/CharacterList.tsx';
+
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router.tsx';
 
 function App() {
-  return (
-    <div className={'container'}>
-      <CharacterList />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

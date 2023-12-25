@@ -1,31 +1,38 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { RootState } from '../store.ts';
 import { getCharacterById } from '../store/charactersSlice.ts';
 import { Character } from '../interfaces/Character.ts';
+import ErrorComponent from './ErrorComponent.tsx';
+import LoadingComponent from './LoadingComponent.tsx';
+import { useParams } from 'react-router-dom';
 
-interface CharacterDetailsProps {
-  characterId: number;
-}
-
-const CharacterDetails: React.FC<CharacterDetailsProps> = ({ characterId }) => {
+const CharacterDetails = () => {
+  const { characterId } = useParams<{ characterId: string }>();
   const dispatch = useDispatch();
   const character = useSelector(
     (state: RootState) => state.characters.selectedCharacter as Character,
   );
   const status = useSelector((state: RootState) => state.characters.status);
+  const error = useSelector((state: RootState) => state.characters.error);
 
   useEffect(() => {
-    // @ts-ignore
-    dispatch(getCharacterById(characterId));
+    if (characterId) {
+      // @ts-ignore
+      dispatch(getCharacterById(Number(characterId)));
+    }
   }, [dispatch, characterId]);
 
   if (status === 'loading') {
-    return <div>Loading...</div>;
+    return <LoadingComponent />;
   }
 
   if (!character) {
     return <div>Character not found</div>;
+  }
+
+  if (error) {
+    return <ErrorComponent message={error} />;
   }
 
   return (
