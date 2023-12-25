@@ -3,9 +3,9 @@ import CharacterList from './components/CharacterList.tsx';
 
 function App() {
   return (
-    <>
+    <div className={'container'}>
       <CharacterList />
-    </>
+    </div>
   );
 }
 

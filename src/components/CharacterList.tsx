@@ -4,8 +4,8 @@ import { getCharacters } from '../store/charactersSlice.ts';
 import { RootState } from '../store.ts';
 import CharacterCard from './CharacterCard.tsx';
 import { AppDispatch } from '../store.ts';
-import Character from '../interfaces/Character.ts';
 import { v4 as uuidv4 } from 'uuid';
+import { Character } from '../interfaces/Character.ts';
 
 const CharacterList = () => {
   const dispatch = useDispatch<AppDispatch>();

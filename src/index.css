@@ -1,12 +1,31 @@
+@import './reset.css';
+
+.container {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .character-card {
   border: 1px solid #ddd;
   padding: 10px;
   margin: 10px;
-  text-align: center;
+  width: calc(25% - 20px);
+  box-sizing: border-box;
 }
 
-.character-list {
+
+.character-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.characters-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 20px;
 }
